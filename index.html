@@ -74,7 +74,7 @@
     #nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 20;
+      z-index: 30;
       padding: 35px 40px;
       display: flex;
       justify-content: space-between;
@@ -132,12 +132,12 @@
       pointer-events: none;
     }
 
-    /* Cursor zones — invisible click areas, cursor changes on hover */
+    /* Cursor zones — full viewport width */
     .zone {
-      position: absolute;
+      position: fixed;
       top: 0;
       bottom: 0;
-      width: 50%;
+      width: 50vw;
       z-index: 5;
     }
     .zone-prev {
@@ -265,6 +265,8 @@
     pageInfo.classList.remove('active');
     navRight.textContent = 'information';
     document.getElementById('footer').style.display = 'none';
+    document.getElementById('zone-prev').style.display = '';
+    document.getElementById('zone-next').style.display = '';
   }
 
   function goInfo(e) {
@@ -274,6 +276,8 @@
     pageInfo.classList.add('active');
     navRight.textContent = '( close )';
     document.getElementById('footer').style.display = 'block';
+    document.getElementById('zone-prev').style.display = 'none';
+    document.getElementById('zone-next').style.display = 'none';
   }
 
   navHome.addEventListener('click', goHome);
