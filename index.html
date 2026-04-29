@@ -195,9 +195,16 @@
         align-self: flex-end;
       }
 
-      /* Fix image clipping on mobile */
+      /* Fix hover colour on touch — don't go grey on tap */
+      @media (hover: none) {
+        a:hover { color: #c1911b; }
+      }
+
+      /* Fix image clipping — let image scale freely within bounds */
       .slide img {
-        max-height: calc(100svh - 80px);
+        width: auto;
+        max-width: 100%;
+        max-height: calc(100svh - 100px);
       }
 
       /* Info page: scrollable, bottom padding for inline footer */
@@ -287,6 +294,7 @@
     <span class="underline-lower">contact</span><br><br>
     <a href="mailto:info@tessangel.com">e-mail</a><br>
     <a href="http://instagram.com/tessangelceramics/" target="_blank" rel="noopener">instagram</a><br>
+    <br>
     <div id="footer-mobile">© 2025 tess angel. all rights reserved</div>
   </div>
 </div>
