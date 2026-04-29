@@ -197,8 +197,12 @@
       }
 
       .slideshow-wrap {
-        width: 100%;
-        align-self: flex-end;
+        position: fixed;
+        bottom: calc(25px + env(safe-area-inset-bottom, 0px));
+        left: 30px;
+        right: 30px;
+        width: auto;
+        overflow: hidden;
       }
 
       /* Fix hover colour on touch — don't go grey on tap */
