@@ -292,6 +292,15 @@
   document.getElementById('zone-prev').addEventListener('click', () => goTo(idx - 1));
   document.getElementById('zone-next').addEventListener('click', () => goTo(idx + 1));
 
+  // Keyboard controls
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && onInfo) goHome();
+    if (!onInfo) {
+      if (e.key === 'ArrowLeft') goTo(idx - 1);
+      if (e.key === 'ArrowRight') goTo(idx + 1);
+    }
+  });
+
   // Preload all images
   slides.forEach(s => {
     const img = new Image();
