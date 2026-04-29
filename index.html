@@ -196,6 +196,352 @@
         overflow: hidden;
       }
 
+      .slideshow-wrap {
+        width: 100%;
+        align-self: flex-end;
+      }
+
+      /* Fix hover colour on touch — don't go grey on tap */
+      @media (hover: none) {
+        a:hover { color: #c1911b; }
+      }
+
+      .slide img {
+        width: 100%;
+        height: auto;
+        max-height: calc(100svh - 80px - env(safe-area-inset-bottom, 34px));
+        object-fit: contain;
+        object-position: bottom center;
+      }
+
+      /* Info page: scrollable, bottom padding for inline footer */
+      #page-info {
+        padding: 100px 30px 30px;
+      }
+      .info-content { padding-left: 0; padding-right: 0; }
+
+      /* Nav: box-shadow fade instead of gradient */
+      #nav {
+        padding: 25px 30px 20px;
+        background: #ffffff;
+        box-shadow: 0px -0.5px 10px 20px #ffffff;
+      }
+
+      /* No nav shadow on homepage */
+      body.is-home #nav {
+        box-shadow: none;
+        background: transparent;
+      }
+
+      /* Landscape adjustments */
+      @media (orientation: landscape) {
+        .slideshow-wrap {
+          bottom: calc(15px + env(safe-area-inset-bottom, 0px));
+          left: 20px;
+          right: 20px;
+        }
+        .slide img {
+          max-height: calc(100svh - 60px);
+        }
+      }
+      #footer { display: none !important; }
+
+      /* Inline footer at bottom of info content */
+      #footer-mobile {
+        display: none;
+        padding: 40px 0 0 0;
+        font-size: 10.5px;
+        color: #c1911b;
+        font-family: "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        line-height: 13px;
+        letter-spacing: 0.05em;
+      }
+      #page-info.active #footer-mobile {
+        display: block;
+      }
+    }
+  </style>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<!-- PINNED NAV -->
+<div id="nav">
+  <a href="#" id="nav-home">tess angel</a>
+  <a href="#" id="nav-right">information</a>
+</div>
+
+<!-- HOME PAGE -->
+<div id="page-home">
+  <div class="slideshow-wrap">
+    <div class="slideshow" id="slideshow">
+
+      <!-- Cursor-zone hit areas -->
+      <div class="zone zone-prev" id="zone-prev"></div>
+      <div class="zone zone-next" id="zone-next"></div>
+
+      <div class="slide active"><img src="images/ta_11.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_12.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_16.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_15.jpg" alt=""></div>
+      <div class="slide"><img src="images/rivervessel.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_4.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_3.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_5.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_1.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta3_2.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_9.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta2_2.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_10.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta2_4.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_2.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta2_3.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_13.jpg" alt=""></div>
+    </div>
+  </div>
+</div>
+
+<!-- INFORMATION PAGE -->
+<div id="page-info">
+  <div class="info-content">
+    tess angel (b. 1995) is a designer and ceramicist from sydney, australia.<br>
+    <br><br>
+    <span class="underline-lower">education</span><br><br>
+    diploma of ceramics<br>
+    tafe nsw northern beaches<br>
+    2025<br>
+    <br>
+    bachelor of design<br>
+    university of new south wales<br>
+    2023<br>
+    <br><br>
+    <span class="underline-lower">contact</span><br><br>
+    <a href="mailto:info@tessangel.com">e-mail</a><br>
+    <a href="http://instagram.com/tessangelceramics/" target="_blank" rel="noopener">instagram</a><br>
+    <br>
+    <div id="footer-mobile">© 2025 tess angel. all rights reserved</div>
+  </div>
+</div>
+
+<!-- PINNED FOOTER -->
+<div id="footer">
+  <span class="caption">© 2025 tess angel. all rights reserved</span>
+</div>
+
+<script>
+  // ── Navigation (home / information) ──
+  const navHome  = document.getElementById('nav-home');
+  const navRight = document.getElementById('nav-right');
+  const pageHome = document.getElementById('page-home');
+  const pageInfo = document.getElementById('page-info');
+  let onInfo = false;
+
+  function goHome(e) {
+    if (e) e.preventDefault();
+    onInfo = false;
+    // Reset scroll first, then show home on next frame so Safari's UI has snapped back
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    window.scrollTo(0, 0);
+    requestAnimationFrame(() => {
+      pageHome.style.display = '';
+      pageInfo.classList.remove('active');
+      pageInfo.scrollTop = 0;
+      navRight.textContent = 'information';
+      document.getElementById('footer').style.display = 'none';
+      document.getElementById('zone-prev').style.display = '';
+      document.getElementById('zone-next').style.display = '';
+      document.body.classList.add('is-home');
+    });
+  }
+
+  function goInfo(e) {
+    if (e) e.preventDefault();
+    onInfo = true;
+    pageHome.style.display = 'none';
+    pageInfo.classList.add('active');
+    pageInfo.scrollTop = 0;
+    window.scrollTo(0, 0);
+    navRight.textContent = '( close )';
+    document.getElementById('footer').style.display = 'block';
+    document.getElementById('zone-prev').style.display = 'none';
+    document.getElementById('zone-next').style.display = 'none';
+    document.body.classList.remove('is-home');
+  }
+
+  // Start on home
+  document.body.classList.add('is-home');
+
+  navHome.addEventListener('click', goHome);
+  navRight.addEventListener('click', e => onInfo ? goHome(e) : goInfo(e));
+
+  // ── Slideshow: cursor-zones, no autoplay, instant swap ──
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let idx = 0;
+
+  function goTo(n) {
+    slides[idx].classList.remove('active');
+    idx = (n + slides.length) % slides.length;
+    slides[idx].classList.add('active');
+  }
+
+  document.getElementById('zone-prev').addEventListener('click', () => goTo(idx - 1));
+  document.getElementById('zone-next').addEventListener('click', () => goTo(idx + 1));
+
+  // Keyboard controls
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && onInfo) goHome();
+    if (!onInfo) {
+      if (e.key === 'ArrowLeft') goTo(idx - 1);
+      if (e.key === 'ArrowRight') goTo(idx + 1);
+    }
+  });
+
+  // Preload all images
+  slides.forEach(s => {
+    const img = new Image();
+    img.src = s.querySelector('img').src;
+  });
+</script>
+
+</body>
+</html>      color: #c1911b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover { color: #d8d8d8; }
+    a:active { opacity: 0.7; }
+
+    .underline-lower {
+      text-decoration: underline;
+      text-decoration-color: inherit;
+      text-decoration-thickness: 0.06em;
+      text-underline-offset: 7px;
+    }
+
+    .caption {
+      font-size: 10.5px;
+      font-weight: 400;
+      color: #c1911b;
+      font-family: "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 13px;
+      letter-spacing: 0.05em;
+      display: block;
+    }
+
+    /* ── PINNED NAV ── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 30;
+      padding: 35px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: none;
+    }
+    #nav a { pointer-events: auto; }
+
+    /* ── PINNED FOOTER ── */
+    #footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 20;
+      padding: 35px 40px;
+      pointer-events: none;
+      display: none;
+    }
+
+    /* ── HOME PAGE ── */
+    #page-home {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    /* 8 of 12 columns centered */
+    .slideshow-wrap {
+      width: 66.6667%;
+      position: relative;
+    }
+
+    /* ── SLIDESHOW ── */
+    .slideshow {
+      position: relative;
+      width: 100%;
+      line-height: 0;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+    }
+    .slide.active {
+      display: block;
+    }
+    .slide img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: calc(100vh - 80px);
+      object-fit: contain;
+      object-position: center center;
+      pointer-events: none;
+    }
+
+    /* Cursor zones — full viewport width */
+    .zone {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 50vw;
+      z-index: 5;
+    }
+    .zone-prev {
+      left: 0;
+      cursor: w-resize;
+    }
+    .zone-next {
+      right: 0;
+      cursor: e-resize;
+    }
+
+    /* ── INFORMATION PAGE ── */
+    #page-info {
+      display: none;
+      min-height: 100vh;
+      padding-top: 35px;
+      padding-bottom: 80px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    #page-info.active {
+      display: block;
+    }
+    .info-content {
+      padding-left: 22%;
+      padding-right: 22%;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 1040px) {
+      body { font-size: 18px; }
+
+      /* Homepage: exact viewport height using svh (accounts for Safari UI) */
+      body.is-home {
+        overflow: hidden;
+        height: 100svh;
+      }
+
+      #page-home {
+        height: 100svh;
+        padding: 0;
+        align-items: flex-end;
+        overflow: hidden;
+      }
+
       /* Slideshow fixed to bottom of screen */
       .slideshow-wrap {
         position: fixed;
