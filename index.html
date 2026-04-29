@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>tess angel</title>
+  <meta name="keywords" content="Tess Angel, designer, ceramics, artist, ceramic artist, ceramist, sydney designer, sydney artist, australian designer, australian ceramics, contemporary design, design portfolio, object design, dharug country, penrith, nepean, sydney australia">
+  <link rel="canonical" href="https://tessangel.com">
+  <meta property="og:locale" content="en_AU">
+  <link rel="icon" href="https://freight.cargo.site/t/original/i/T2667915345519830246015607313433/tess.ico" sizes="any">
+
+  <style>
+    @font-face {
+      font-display: block;
+      font-family: "Neue Haas Grotesk";
+      src: url("https://type.cargo.site/files/NeueHaasGroteskText-Regular.woff") format("woff");
+      font-style: normal;
+      font-weight: 400;
+    }
+    @font-face {
+      font-display: block;
+      font-family: "Neue Haas Grotesk";
+      src: url("https://type.cargo.site/files/NeueHaasGroteskText-Bold.woff") format("woff");
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-color: #ffffff;
+    }
+
+    body {
+      font-family: "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: #c1911b;
+      line-height: 140%;
+      letter-spacing: 0.070em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: #c1911b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover { color: #d8d8d8; }
+    a:active { opacity: 0.7; }
+
+    .underline-lower {
+      text-decoration: underline;
+      text-decoration-color: inherit;
+      text-decoration-thickness: 0.06em;
+      text-underline-offset: 7px;
+    }
+
+    .caption {
+      font-size: 10.5px;
+      font-weight: 400;
+      color: #c1911b;
+      font-family: "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 13px;
+      letter-spacing: 0.05em;
+      display: block;
+    }
+
+    /* ── PINNED NAV ── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 20;
+      padding: 35px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: none;
+    }
+    #nav a { pointer-events: auto; }
+
+    /* ── PINNED FOOTER ── */
+    #footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 20;
+      padding: 35px 40px;
+      pointer-events: none;
+      display: none;
+    }
+
+    /* ── HOME PAGE ── */
+    #page-home {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    /* 8 of 12 columns centered */
+    .slideshow-wrap {
+      width: 66.6667%;
+      position: relative;
+    }
+
+    /* ── SLIDESHOW ── */
+    .slideshow {
+      position: relative;
+      width: 100%;
+      line-height: 0;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+    }
+    .slide.active {
+      display: block;
+    }
+    .slide img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: calc(100vh - 80px);
+      object-fit: contain;
+      object-position: bottom center;
+      pointer-events: none;
+    }
+
+    /* Cursor zones — invisible click areas, cursor changes on hover */
+    .zone {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      z-index: 5;
+    }
+    .zone-prev {
+      left: 0;
+      cursor: w-resize;
+    }
+    .zone-next {
+      right: 0;
+      cursor: e-resize;
+    }
+
+    /* ── INFORMATION PAGE ── */
+    #page-info {
+      display: none;
+      min-height: 100vh;
+      padding-top: 110px;
+      padding-bottom: 80px;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+    #page-info.active {
+      display: block;
+    }
+    .info-content {
+      padding-left: 22%;
+      padding-right: 22%;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 1000px) {
+      .slideshow-wrap {
+        width: 100%;
+        padding-top: 7rem;
+        align-self: center;
+      }
+      #page-home {
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 767px) {
+      body { font-size: 18px; }
+      #nav, #footer { padding: 25px 20px; }
+      #page-home { padding: 20px; }
+      #page-info { padding: 80px 20px 60px; }
+      .info-content { padding-left: 0; padding-right: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- PINNED NAV -->
+<div id="nav">
+  <a href="#" id="nav-home">tess angel</a>
+  <a href="#" id="nav-right">information</a>
+</div>
+
+<!-- HOME PAGE -->
+<div id="page-home">
+  <div class="slideshow-wrap">
+    <div class="slideshow" id="slideshow">
+
+      <!-- Cursor-zone hit areas -->
+      <div class="zone zone-prev" id="zone-prev"></div>
+      <div class="zone zone-next" id="zone-next"></div>
+
+      <div class="slide active"><img src="images/ta_11.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_12.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_16.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_15.jpg" alt=""></div>
+      <div class="slide"><img src="images/rivervessel.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_4.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_3.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_5.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_1.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta3_2.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_9.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta2_2.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_10.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta2_4.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_2.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta2_3.jpg" alt=""></div>
+      <div class="slide"><img src="images/ta_13.jpg" alt=""></div>
+    </div>
+  </div>
+</div>
+
+<!-- INFORMATION PAGE -->
+<div id="page-info">
+  <div class="info-content">
+    tess angel (b. 1995) is a designer and ceramicist from sydney, australia.<br>
+    <br><br>
+    <span class="underline-lower">education</span><br><br>
+    diploma of ceramics<br>
+    tafe nsw northern beaches<br>
+    2025<br>
+    <br>
+    bachelor of design<br>
+    university of new south wales<br>
+    2023<br>
+    <br><br>
+    <span class="underline-lower">contact</span><br><br>
+    <a href="mailto:info@tessangel.com">e-mail</a><br>
+    <a href="http://instagram.com/tessangelceramics/" target="_blank" rel="noopener">instagram</a><br>
+  </div>
+</div>
+
+<!-- PINNED FOOTER -->
+<div id="footer">
+  <span class="caption">© 2025 tess angel. all rights reserved</span>
+</div>
+
+<script>
+  // ── Navigation (home / information) ──
+  const navHome  = document.getElementById('nav-home');
+  const navRight = document.getElementById('nav-right');
+  const pageHome = document.getElementById('page-home');
+  const pageInfo = document.getElementById('page-info');
+  let onInfo = false;
+
+  function goHome(e) {
+    if (e) e.preventDefault();
+    onInfo = false;
+    pageHome.style.display = '';
+    pageInfo.classList.remove('active');
+    navRight.textContent = 'information';
+    document.getElementById('footer').style.display = 'none';
+  }
+
+  function goInfo(e) {
+    if (e) e.preventDefault();
+    onInfo = true;
+    pageHome.style.display = 'none';
+    pageInfo.classList.add('active');
+    navRight.textContent = '( close )';
+    document.getElementById('footer').style.display = '';
+  }
+
+  navHome.addEventListener('click', goHome);
+  navRight.addEventListener('click', e => onInfo ? goHome(e) : goInfo(e));
+
+  // ── Slideshow: cursor-zones, no autoplay, instant swap ──
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let idx = 0;
+
+  function goTo(n) {
+    slides[idx].classList.remove('active');
+    idx = (n + slides.length) % slides.length;
+    slides[idx].classList.add('active');
+  }
+
+  document.getElementById('zone-prev').addEventListener('click', () => goTo(idx - 1));
+  document.getElementById('zone-next').addEventListener('click', () => goTo(idx + 1));
+
+  // Preload all images
+  slides.forEach(s => {
+    const img = new Image();
+    img.src = s.querySelector('img').src;
+  });
+</script>
+
+</body>
+</html>
