@@ -187,20 +187,20 @@
 
     @media (max-width: 1040px) {
       body { font-size: 18px; }
-      #nav, #footer { padding: 25px 30px; }
       #page-home { padding: 30px; align-items: flex-end; }
       #page-info { padding: 80px 30px 60px; }
       .info-content { padding-left: 0; padding-right: 0; }
 
-      /* Footer sits in document flow on mobile, not fixed */
-      #footer {
-        position: static;
-        display: none;
-        padding: 40px 30px;
+      /* Hide fixed nav padding, add gradient fade */
+      #nav {
+        padding: 25px 30px 40px;
+        background: linear-gradient(to bottom, rgba(255,255,255,1) 65%, rgba(255,255,255,0) 100%);
       }
-      #page-info.active #footer-mobile {
-        display: block;
-      }
+
+      /* Hide fixed footer on mobile always */
+      #footer { display: none !important; }
+
+      /* Mobile inline footer */
       #footer-mobile {
         display: none;
         padding: 40px 0 0 0;
@@ -209,6 +209,9 @@
         font-family: "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
         line-height: 13px;
         letter-spacing: 0.05em;
+      }
+      #page-info.active #footer-mobile {
+        display: block;
       }
     }
   </style>
