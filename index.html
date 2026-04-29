@@ -317,6 +317,8 @@
     onInfo = false;
     pageHome.style.display = '';
     pageInfo.classList.remove('active');
+    pageInfo.scrollTop = 0;
+    window.scrollTo(0, 0);
     navRight.textContent = 'information';
     document.getElementById('footer').style.display = 'none';
     document.getElementById('zone-prev').style.display = '';
