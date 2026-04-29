@@ -155,8 +155,8 @@
       min-height: 100vh;
       padding-top: 110px;
       padding-bottom: 80px;
-      padding-left: 40px;
-      padding-right: 40px;
+      padding-left: 0;
+      padding-right: 0;
     }
     #page-info.active {
       display: block;
@@ -273,7 +273,7 @@
     pageHome.style.display = 'none';
     pageInfo.classList.add('active');
     navRight.textContent = '( close )';
-    document.getElementById('footer').style.display = '';
+    document.getElementById('footer').style.display = 'block';
   }
 
   navHome.addEventListener('click', goHome);
