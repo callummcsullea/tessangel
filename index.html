@@ -360,6 +360,8 @@
     onInfo = true;
     pageHome.style.display = 'none';
     pageInfo.classList.add('active');
+    pageInfo.scrollTop = 0;
+    window.scrollTo(0, 0);
     navRight.textContent = '( close )';
     document.getElementById('footer').style.display = 'block';
     document.getElementById('zone-prev').style.display = 'none';
