@@ -178,20 +178,38 @@
     @media (max-width: 1040px) {
       .slideshow-wrap {
         width: 100%;
-        padding-top: 7rem;
-        align-self: center;
+        align-self: flex-end;
       }
       #page-home {
-        align-items: center;
+        align-items: flex-end;
       }
     }
 
     @media (max-width: 1040px) {
       body { font-size: 18px; }
-      #nav, #footer { padding: 25px 20px; }
-      #page-home { padding: 20px; }
-      #page-info { padding: 80px 20px 60px; }
+      #nav, #footer { padding: 25px 30px; }
+      #page-home { padding: 30px; align-items: flex-end; }
+      #page-info { padding: 80px 30px 60px; }
       .info-content { padding-left: 0; padding-right: 0; }
+
+      /* Footer sits in document flow on mobile, not fixed */
+      #footer {
+        position: static;
+        display: none;
+        padding: 40px 30px;
+      }
+      #page-info.active #footer-mobile {
+        display: block;
+      }
+      #footer-mobile {
+        display: none;
+        padding: 40px 0 0 0;
+        font-size: 10.5px;
+        color: #c1911b;
+        font-family: "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        line-height: 13px;
+        letter-spacing: 0.05em;
+      }
     }
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -251,6 +269,7 @@
     <span class="underline-lower">contact</span><br><br>
     <a href="mailto:info@tessangel.com">e-mail</a><br>
     <a href="http://instagram.com/tessangelceramics/" target="_blank" rel="noopener">instagram</a><br>
+    <div id="footer-mobile">© 2025 tess angel. all rights reserved</div>
   </div>
 </div>
 
