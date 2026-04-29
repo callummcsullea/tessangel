@@ -176,42 +176,40 @@
 
     /* ── MOBILE ── */
     @media (max-width: 1040px) {
+      body { font-size: 18px; }
+
+      /* Homepage: exact 100vh, no scroll */
+      body.is-home {
+        overflow: hidden;
+        height: 100vh;
+      }
+
+      #page-home {
+        height: 100vh;
+        padding: 30px;
+        align-items: flex-end;
+      }
+
       .slideshow-wrap {
         width: 100%;
         align-self: flex-end;
       }
-      #page-home {
-        align-items: flex-end;
-      }
-    }
 
-    @media (max-width: 1040px) {
-      body { font-size: 18px; }
-      #page-home { padding: 30px; align-items: flex-end; }
-      #page-info { padding: 80px 30px 60px; }
+      /* Info page: scrollable, with padding at bottom for fixed footer */
+      #page-info {
+        padding: 100px 30px 80px;
+      }
       .info-content { padding-left: 0; padding-right: 0; }
 
-      /* Hide fixed nav padding, add gradient fade */
+      /* Nav: taller gradient so content fades earlier */
       #nav {
         padding: 25px 30px 40px;
-        background: linear-gradient(to bottom, rgba(255,255,255,1) 65%, rgba(255,255,255,0) 100%);
+        background: linear-gradient(to bottom, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
       }
 
-      /* Hide fixed footer on mobile always */
-      #footer { display: none !important; }
-
-      /* Mobile inline footer */
-      #footer-mobile {
-        display: none;
-        padding: 40px 0 0 0;
-        font-size: 10.5px;
-        color: #c1911b;
-        font-family: "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        line-height: 13px;
-        letter-spacing: 0.05em;
-      }
-      #page-info.active #footer-mobile {
-        display: block;
+      /* Footer: fixed at bottom, 30px from edge matching padding */
+      #footer {
+        padding: 0 30px 30px;
       }
     }
   </style>
@@ -272,7 +270,6 @@
     <span class="underline-lower">contact</span><br><br>
     <a href="mailto:info@tessangel.com">e-mail</a><br>
     <a href="http://instagram.com/tessangelceramics/" target="_blank" rel="noopener">instagram</a><br>
-    <div id="footer-mobile">© 2025 tess angel. all rights reserved</div>
   </div>
 </div>
 
@@ -298,6 +295,7 @@
     document.getElementById('footer').style.display = 'none';
     document.getElementById('zone-prev').style.display = '';
     document.getElementById('zone-next').style.display = '';
+    document.body.classList.add('is-home');
   }
 
   function goInfo(e) {
@@ -309,7 +307,11 @@
     document.getElementById('footer').style.display = 'block';
     document.getElementById('zone-prev').style.display = 'none';
     document.getElementById('zone-next').style.display = 'none';
+    document.body.classList.remove('is-home');
   }
+
+  // Start on home
+  document.body.classList.add('is-home');
 
   navHome.addEventListener('click', goHome);
   navRight.addEventListener('click', e => onInfo ? goHome(e) : goInfo(e));
