@@ -200,11 +200,15 @@
         a:hover { color: #c1911b; }
       }
 
-      /* Fix image clipping — let image scale freely within bounds */
-      .slide img {
-        width: auto;
-        max-width: 100%;
+      /* Fix image clipping — explicit height so object-fit works */
+      .slideshow-wrap {
         max-height: calc(100svh - 100px);
+      }
+      .slide img {
+        width: 100%;
+        height: calc(100svh - 100px);
+        object-fit: contain;
+        object-position: bottom center;
       }
 
       /* Info page: scrollable, bottom padding for inline footer */
