@@ -3,6 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="screen-orientation" content="portrait">
+  <style>
+    /* Prevent browser font scaling on rotation */
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  </style>
   <title>tess angel</title>
   <meta name="description" content="ceramicist">
   <meta property="og:title" content="tess angel">
@@ -227,7 +232,23 @@
         box-shadow: 0px -0.5px 10px 20px #ffffff;
       }
 
-      /* Hide fixed footer on mobile — use inline one instead */
+      /* No nav shadow on homepage */
+      body.is-home #nav {
+        box-shadow: none;
+        background: transparent;
+      }
+
+      /* Landscape adjustments */
+      @media (orientation: landscape) {
+        .slideshow-wrap {
+          bottom: calc(15px + env(safe-area-inset-bottom, 0px));
+          left: 20px;
+          right: 20px;
+        }
+        .slide img {
+          max-height: calc(100svh - 60px);
+        }
+      }
       #footer { display: none !important; }
 
       /* Inline footer at bottom of info content */
