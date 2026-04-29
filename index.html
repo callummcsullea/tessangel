@@ -186,11 +186,11 @@
       /* Homepage: exact viewport height using svh (accounts for Safari UI) */
       body.is-home {
         overflow: hidden;
-        height: 100svh;
+        height: 100vh;
       }
 
       #page-home {
-        height: 100svh;
+        height: 100vh;
         padding: 0;
         align-items: flex-end;
         overflow: hidden;
@@ -213,7 +213,7 @@
       .slide img {
         width: 100%;
         height: auto;
-        max-height: calc(100svh - 80px - env(safe-area-inset-bottom, 34px));
+        max-height: calc(100vh - 80px - env(safe-area-inset-bottom, 34px));
         object-fit: contain;
         object-position: bottom center;
       }
@@ -245,7 +245,7 @@
           right: 20px;
         }
         .slide img {
-          max-height: calc(100svh - 60px);
+          max-height: calc(100vh - 60px);
         }
       }
       #footer { display: none !important; }
@@ -344,11 +344,12 @@
     if (e) e.preventDefault();
     onInfo = false;
     document.body.classList.add('is-home');
-    pageHome.style.display = '';
-    pageInfo.classList.remove('active');
-    pageInfo.scrollTop = 0;
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+    window.scrollTo(0, 0);
+    pageInfo.scrollTop = 0;
+    pageHome.style.display = '';
+    pageInfo.classList.remove('active');
     navRight.textContent = 'information';
     document.getElementById('footer').style.display = 'none';
     document.getElementById('zone-prev').style.display = '';
@@ -358,10 +359,12 @@
   function goInfo(e) {
     if (e) e.preventDefault();
     onInfo = true;
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    window.scrollTo(0, 0);
+    pageInfo.scrollTop = 0;
     pageHome.style.display = 'none';
     pageInfo.classList.add('active');
-    pageInfo.scrollTop = 0;
-    window.scrollTo(0, 0);
     navRight.textContent = '( close )';
     document.getElementById('footer').style.display = 'block';
     document.getElementById('zone-prev').style.display = 'none';
