@@ -339,20 +339,16 @@
   function goHome(e) {
     if (e) e.preventDefault();
     onInfo = false;
-    // Reset scroll first, then show home on next frame so Safari's UI has snapped back
+    document.body.classList.add('is-home');
+    pageHome.style.display = '';
+    pageInfo.classList.remove('active');
+    pageInfo.scrollTop = 0;
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-    window.scrollTo(0, 0);
-    requestAnimationFrame(() => {
-      pageHome.style.display = '';
-      pageInfo.classList.remove('active');
-      pageInfo.scrollTop = 0;
-      navRight.textContent = 'information';
-      document.getElementById('footer').style.display = 'none';
-      document.getElementById('zone-prev').style.display = '';
-      document.getElementById('zone-next').style.display = '';
-      document.body.classList.add('is-home');
-    });
+    navRight.textContent = 'information';
+    document.getElementById('footer').style.display = 'none';
+    document.getElementById('zone-prev').style.display = '';
+    document.getElementById('zone-next').style.display = '';
   }
 
   function goInfo(e) {
